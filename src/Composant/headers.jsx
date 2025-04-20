@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from '../assets/image/Logo Diané (2).png';
 
 import "../style/Header.css";
 
@@ -45,7 +44,7 @@ const Header = () => {
         <div className="logo-container">
           <Link to="/accueil" className="logo-link" onClick={closeMobileMenu}>
             <img 
-              src={logo} 
+              src="./src/assets/image/Logo Diané (2).png" // Utilisation du chemin absolu depuis le dossier public
               alt="Logo FootSpace Solutions" 
               className="logo-image"
               width="40"
@@ -90,7 +89,7 @@ const Header = () => {
           >
             <div className="mobile-nav-header">
               <img 
-                src={logo} 
+                src="/assets/image/Logo-Diane-2.png" // Utilisation du chemin absolu pour la version mobile aussi
                 alt="Logo" 
                 className="mobile-logo-image"
                 width="36"
