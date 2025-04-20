@@ -22,7 +22,7 @@
   .pricing-section {
     font-family: 'Open Sans', sans-serif;
     padding: var(--spacing-lg);
-    background: linear-gradient(180deg, var(--color-offwhite) 0%, #FFFFFF 100%);
+    background:  white ;
     min-height: 100vh;
     color: var(--color-text);
     margin-top: 50px;

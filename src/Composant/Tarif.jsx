@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import "../style/tarif.css";
-import SubscriptionModal from "../Pages/SubscriptionModal.jsx";
+import SubscriptionModal from "../Pages/SubscriptionModal";
 
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false);

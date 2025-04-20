@@ -1,0 +1,505 @@
+/* Modal Overlay - Superbe animation d'entrée */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(8px) brightness(0.95);
+    animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; backdrop-filter: blur(0) brightness(1); }
+    to { opacity: 1; backdrop-filter: blur(8px) brightness(0.95); }
+  }
+  
+  /* Container principal - Design premium */
+  .modal-container {
+    background: linear-gradient(145deg, #f8fafc, #f6f2f2);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    position: relative;
+    padding: 2.5rem;
+    transform: translateY(0);
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Bouton de fermeture - Design élégant */
+  .close-button {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-button:hover {
+    color: #ef4444;
+    background: white;
+    transform: rotate(90deg);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* En-tête de la modale - Typographie soignée */
+  .modal-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e3b22;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #025811, #0616a7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.3;
+  }
+  
+  /* Résumé du plan - Carte moderne */
+  .plan-summary {
+    background: rgb(248, 246, 246);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(4, 238, 82, 0.3);
+
+    border: 3px solid rgba(0, 0, 0, 0.03);
+  }
+  
+  .plan-summary p {
+    margin: 0.25rem 0;
+    color: #9d0909;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+  }
+  .title-underline {
+    display: block;
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #04ee52, #021037);
+    margin: 1rem auto;
+    border-radius: 2px;
+  }
+  .plan-summary strong {
+    font-weight: 600;
+    color: #026715;
+  }
+  .modalet {
+    font-size: 1rem;
+    font-style: italic;
+    color: #090a0a;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .savings-notice {
+    color: #10b981;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    padding-top: 0.75rem;
+    border-top: 1px dashed #e2e8f0;
+  }
+  
+  /* Formulaire - Design ultra moderne */
+  .subscription-form {
+    margin-top: 1.5rem;
+  }
+  
+  .form-section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .form-section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #024514;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+  
+  .form-section h3::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 260px;
+    height: 2px;
+    background: linear-gradient(90deg, #035309, #0e0570);
+    border-radius: 2px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+  
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #08090a;
+    margin-bottom: 0.75rem;
+  }
+  
+  .form-group input {
+    width: 90%;
+    padding: 1rem;
+    border: 2px solid #013109;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 1px 2px rgba(75, 146, 87, 0.03);
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #1e6508;
+    box-shadow: 
+      0 0 0 3px rgba(59, 130, 246, 0.1),
+      0 2px 8px rgba(59, 130, 246, 0.15);
+    transform: translateY(-1px);
+  }
+  
+  /* Checkbox personnalisé - Design premium */
+  .terms-section {
+    margin: 2.5rem 0;
+  }
+  
+  .terms-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+  
+  .terms-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    height: 22px;
+    width: 22px;
+    background-color: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    margin-right: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .terms-checkbox:hover input ~ .checkmark {
+    border-color: #94a3b8;
+    transform: scale(1.05);
+  }
+  
+  .terms-checkbox input:checked ~ .checkmark {
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    border-color: transparent;
+    animation: checkmarkPop 0.3s ease;
+  }
+  
+  @keyframes checkmarkPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .checkmark:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-top: -1px;
+  }
+  
+  .terms-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .terms-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .terms-link:hover {
+    color: #2563eb;
+  }
+  
+  .terms-link::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+  }
+  
+  .terms-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Boutons - Design moderne et interactif */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  
+  .cancel-button,
+  .submit-button {
+    padding: 1rem 1.75rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+  }
+  
+  .cancel-button {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .cancel-button:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .submit-button {
+    background: linear-gradient(135deg, #023e18, #034524);
+    color: white;
+    border: none;
+    box-shadow: 
+      0 2px 5px rgba(59, 130, 246, 0.2),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .submit-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 5px 15px rgba(59, 130, 246, 0.3),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
+  }
+  
+  .submit-button:hover::after {
+    opacity: 1;
+  }
+  
+  .submit-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Styles pour les toasts - Design élégant */
+  .Toastify__toast-container {
+    width: auto;
+    max-width: 500px;
+  }
+  
+  .Toastify__toast {
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    font-family: inherit;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #1e293b !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .Toastify__toast--success {
+    border-left: 4px solid #10b981;
+  }
+  
+  .Toastify__toast--error {
+    border-left: 4px solid #ef4444;
+  }
+  
+  .Toastify__toast--info {
+    border-left: 4px solid #3b82f6;
+  }
+  
+  .Toastify__toast--warning {
+    border-left: 4px solid #f59e0b;
+  }
+  
+  .Toastify__progress-bar {
+    height: 3px;
+  }
+  
+  .Toastify__progress-bar--success {
+    background: linear-gradient(90deg, #10b981, #a7f3d0);
+  }
+  
+  .Toastify__progress-bar--error {
+    background: linear-gradient(90deg, #ef4444, #fca5a5);
+  }
+  
+  .Toastify__progress-bar--info {
+    background: linear-gradient(90deg, #3b82f6, #93c5fd);
+  }
+  
+  .Toastify__progress-bar--warning {
+    background: linear-gradient(90deg, #f59e0b, #fcd34d);
+  }
+  
+  /* Responsive ultra-optimisé */
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .modal-container {
+      padding: 3rem;
+    }
+  
+    .modal-header h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .modal-container {
+      width: 95%;
+      max-height: 95vh;
+      padding: 1.75rem;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  
+    .cancel-button,
+    .submit-button {
+      width: 100%;
+    }
+  
+    .Toastify__toast-container {
+      width: 90%;
+      left: 5%;
+      right: 5%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal-container {
+      padding: 1.5rem;
+    }
+  
+    .modal-header h2 {
+      font-size: 1.5rem;
+    }
+  
+    .plan-summary p {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  
+    .plan-summary strong {
+      display: block;
+    }
+  }
+  
+  /* Animation subtile pour les champs */
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .form-group {
+    animation: floatIn 0.4s ease forwards;
+  }
+  
+  .form-group:nth-child(1) { animation-delay: 0.1s; }
+  .form-group:nth-child(2) { animation-delay: 0.2s; }
+  .form-group:nth-child(3) { animation-delay: 0.3s; }
