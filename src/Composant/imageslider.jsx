@@ -1,9 +1,9 @@
 import React from 'react';
 import { ArrowRight, Calendar, Clock, Users, ChevronDown } from 'lucide-react';
-import"../style/ims.css";
-import logos from "../assets/image/ChatGPT Image 16 avr. 2025, 18_26_14.png";
+import "../style/ims.css";
+import logos from "../assets/Image/ChatGPT Image 16 avr. 2025, 18_26_14.png"; // Mise à jour du chemin
 
-const imageslider = () => {
+const ImageSlider = () => {
   const scrollToFeatures = () => {
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -45,19 +45,14 @@ const imageslider = () => {
             </div>
             
             <div className="hero-features">
-              {[
-                { icon: Calendar, text: "Calendrier intégré" },
-                { icon: Users, text: "Gestion d'équipe" },
-                { icon: Clock, text: "Réservations en ligne" }
-              ].map((feature, index) => (
-                <div key={index} className="hero-feature">
-                  <feature.icon size={20} className="hero-feature-icon" />
-                  <span>{feature.text}</span>
-                </div>
-              ))}
+              {[{ icon: Calendar, text: "Calendrier intégré" }, { icon: Users, text: "Gestion d'équipe" }, { icon: Clock, text: "Réservations en ligne" }]
+                .map((feature, index) => (
+                  <div key={index} className="hero-feature">
+                    <feature.icon size={20} className="hero-feature-icon" />
+                    <span>{feature.text}</span>
+                  </div>
+                ))}
             </div>
-
-         
           </div>
           
           {/* Hero image */}
@@ -66,7 +61,7 @@ const imageslider = () => {
               <div className="hero-image-gradient">
                 <div className="hero-image-inner">
                   <img 
-                    src={logos}
+                    src={logos} // Utilisation du chemin mis à jour
                     alt="Footspace Solutions dashboard" 
                     className="hero-image"
                   />
@@ -90,4 +85,4 @@ const imageslider = () => {
   );
 };
 
-export default imageslider
+export default ImageSlider;
