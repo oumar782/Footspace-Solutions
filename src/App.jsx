@@ -32,9 +32,27 @@ const TrackPageView = () => {
 };
 
 const App = () => {
+  // Ajout d'un effet pour réinitialiser le scroll au chargement de la page
+  useEffect(() => {
+    window.scrollTo(0, 0); // Assure que la page commence toujours en haut
+  }, []);
+
   return (
     <Router>
       <TrackPageView />
+      {/* Styles globaux pour éviter les barres de défilement horizontales */}
+      <style>
+        {`
+          body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Empêche le défilement horizontal */
+          }
+          .main-content {
+            min-height: calc(100vh - 150px); /* Ajustez selon la hauteur de votre header et footer */
+          }
+        `}
+      </style>
       <Header />
       <div className="main-content">
         <Routes>
@@ -47,7 +65,6 @@ const App = () => {
           <Route path="/personnaliser" element={<Personnalisable />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Souscription" element={<SubscriptionModal />} />
-
           <Route path="/ima" element={<Images />} />
           {/* Route 404 - doit être la dernière */}
           <Route path="*" element={<NotFound />} />
