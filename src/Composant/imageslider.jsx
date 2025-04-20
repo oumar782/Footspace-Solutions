@@ -1,0 +1,93 @@
+import React from 'react';
+import { ArrowRight, Calendar, Clock, Users, ChevronDown } from 'lucide-react';
+import"../style/ims.css";
+import logos from "../assets/image/ChatGPT Image 16 avr. 2025, 18_26_14.png";
+
+const imageslider = () => {
+  const scrollToFeatures = () => {
+    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <section id="home" className="hero-section">
+      {/* Background decorations */}
+      <div className="hero-background">
+        <div className="hero-blob hero-blob-1"></div>
+        <div className="hero-blob hero-blob-2"></div>
+      </div>
+
+      <div className="hero-container">
+        <div className="hero-grid">
+          {/* Hero content */}
+          <div className="hero-content">
+            <div className="hero-badge">
+              <span className="hero-badge-emoji">🌱</span>
+              <span className="hero-badge-text">La gestion sportive simplifiée</span>
+            </div>
+            
+            <h1 className="hero-title">
+              <span>Transformez votre </span>
+              <span className="hero-title-gradient">expérience sportive</span>
+            </h1>
+            
+            <p className="hero-description">
+              Simplifiez la gestion de vos activités sportives avec notre plateforme tout-en-un. Calendriers, réservations et paiements en un seul endroit.
+            </p>
+            
+            <div className="hero-buttons">
+              <button className="hero-button hero-button-primary">
+                Découvrir la plateforme
+                <ArrowRight size={16} className="hero-button-icon" />
+              </button>
+              <button className="hero-button hero-button-secondary">
+                Demander une démo
+              </button>
+            </div>
+            
+            <div className="hero-features">
+              {[
+                { icon: Calendar, text: "Calendrier intégré" },
+                { icon: Users, text: "Gestion d'équipe" },
+                { icon: Clock, text: "Réservations en ligne" }
+              ].map((feature, index) => (
+                <div key={index} className="hero-feature">
+                  <feature.icon size={20} className="hero-feature-icon" />
+                  <span>{feature.text}</span>
+                </div>
+              ))}
+            </div>
+
+         
+          </div>
+          
+          {/* Hero image */}
+          <div className="hero-image-container">
+            <div className="hero-image-wrapper">
+              <div className="hero-image-gradient">
+                <div className="hero-image-inner">
+                  <img 
+                    src={logos}
+                    alt="Footspace Solutions dashboard" 
+                    className="hero-image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="hero-image-blob hero-image-blob-1"></div>
+            <div className="hero-image-blob hero-image-blob-2"></div>
+            
+            {/* Floating badge */}
+            <div className="hero-status-badge">
+              <div className="hero-status-content">
+                <div className="hero-status-dot"></div>
+                <span className="hero-status-text">En ligne</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default imageslider
