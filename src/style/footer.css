@@ -163,3 +163,7 @@
   transition: color 0.2s ease;
   text-decoration: none;
 }
+
+.legal-link:hover {
+  color: #3b82f6;
+}
