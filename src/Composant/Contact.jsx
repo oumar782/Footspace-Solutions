@@ -1,77 +1,294 @@
-import React from 'react';
-import { FaUser, FaEnvelope, FaBuilding, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-import "../style/contact.css";
+import React, { useEffect, useRef, useState } from "react";
+import "../style/contact.css"; // Importation du fichier CSS pour le style
 
-const Contact = () => {
+// Icônes SVG en ligne pour éviter toute dépendance extérieure
+const UserIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+);
+
+const EnvelopeIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="6" width="20" height="14" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+);
+
+const BuildingIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="6" x2="12" y2="6"/><line x1="12" y1="12" x2="12" y2="12"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+);
+
+const MapPinIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+);
+
+const PaperPlaneIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+);
+
+const PhoneIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+);
+
+const GlobeIcon = (props) => (
+  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+);
+
+function ContactMap() {
+  const mapRef = useRef();
+  useEffect(() => {
+    // Fallback si Google Maps n'est pas dispo
+    const fallbackMap = () => {
+      const mapElement = mapRef.current;
+      if (mapElement) {
+        mapElement.innerHTML = `
+          <div class="contact-map__fallback">
+            <div class="contact-map__fallback-message">
+              <p>Carte Google Maps non disponible.</p>
+              <p>Veuillez nous trouver à l'adresse :</p>
+              <p><strong>123 Avenue des Réservations, 75001 Paris, France</strong></p>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=48.856614,2.3522219" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-map__fallback-link"
+              >
+                Ouvrir dans Google Maps
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    };
+    if (window.google && window.google.maps) {
+      // API Google Maps disponible
+      const paris = { lat: 48.856614, lng: 2.3522219 };
+      const map = new window.google.maps.Map(mapRef.current, {
+        zoom: 15,
+        center: paris,
+        mapTypeId: "roadmap",
+        styles: [ { "featureType": "all", "elementType": "geometry.fill", "stylers": [{"weight": "2.00"}] }, { "featureType": "all", "elementType": "geometry.stroke", "stylers": [{"color": "#9c9c9c"}] }, { "featureType": "landscape", "elementType": "all", "stylers": [{"color": "#f2f2f2"}] }, { "featureType": "road", "elementType": "all", "stylers": [{"saturation": -100}, {"lightness": 45}] }, { "featureType": "water", "elementType": "all", "stylers": [{"color": "#b3dfdf"}, {"visibility": "on"}] }]
+      });
+      const marker = new window.google.maps.Marker({
+        position: paris,
+        map,
+        title: "Notre bureau",
+        animation: window.google.maps.Animation.DROP
+      });
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: `
+          <div class="map-info-window">
+            <h3>Notre bureau</h3>
+            <p>123 Avenue des Réservations<br />75001 Paris, France</p>
+          </div>
+        `
+      });
+      marker.addListener('click', () => {
+        infoWindow.open({ anchor: marker, map });
+      });
+    } else {
+      fallbackMap();
+      // Pour l'utilisateur dev
+      console.log("Pour afficher la carte Google Maps, vous devez ajouter la clé API Google Maps dans le script de la page HTML.");
+    }
+  }, []);
+  return (
+    <div className="contact-map">
+      <div className="contact-map__container" ref={mapRef} aria-label="Google Map"></div>
+      <div className="contact-map__overlay"></div>
+    </div>
+  );
+}
+
+function ContactForm() {
+  const [form, setForm] = useState({
+    prenom: "",
+    nom: "",
+    email: "",
+    entreprise: "",
+    terrains: "1-2",
+    message: ""
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  // Validation simple pour prototype
+  const validate = () => {
+    let err = {};
+    if (!form.prenom.trim()) err.prenom = "Prénom requis";
+    if (!form.nom.trim()) err.nom = "Nom requis";
+    if (!form.email.match(/^[^@]+@[^@]+\.[^@]+$/)) err.email = "Email invalide";
+    if (!form.entreprise.trim()) err.entreprise = "Entreprise requise";
+    return err;
+  };
+
+  const handleChange = e => {
+    const { id, value } = e.target;
+    setForm(f => ({ ...f, [id]: value }));
+    setErrors(e => ({ ...e, [id]: undefined }));
+  };
+
+  const handleBlur = e => {
+    const { id, value } = e.target;
+    if (!value.trim()) setErrors(e => ({ ...e, [id]: `${id[0].toUpperCase() + id.slice(1)} requis` }));
+    else if (id==="email" && !value.match(/^[^@]+@[^@]+\.[^@]+$/)) setErrors(e => ({ ...e, email: "Email invalide" }));
+    else setErrors(e => ({ ...e, [id]: undefined }));
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const err = validate();
+    if (Object.keys(err).length === 0) {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setSuccess(true);
+        setIsSubmitting(false);
+      }, 1300);
+    } else {
+      setErrors(err);
+    }
+  };
+
+  if (success) {
     return (
-        <div className="containerp">
-            <section className="contact-section">
-                <div className="contact-header">
-                    <span className="contact-badge">Contactez-nous</span>
-                    <div className="title-underline"></div>
-                    <h1 className="contact-title">Prêt à optimiser vos réservations ?</h1>
-                    <p className="contact-description">
-                        Contactez-nous pour une démonstration personnalisée ou pour obtenir plus d'informations.
-                    </p>
-                </div>
-                <div className="contact-card">
-                    <div className="contact-card-header">
-                        <h2 className="contact-card-title">Demande de démonstration</h2>
-                        <p className="contact-card-description">
-                            Remplissez le formulaire ci-dessous pour être contacté par notre équipe.
-                        </p>
-                    </div>
-                    <form className="contact-form">
-                        <div className="contact-form-grid">
-                            <div className="contact-form-group">
-                                <label htmlFor="prenom" className="contact-form-label">
-                                    <FaUser className="icon" /> Prénom
-                                </label>
-                                <input type="text" id="prenom" className="contact-form-input" placeholder="Entrez votre prénom" />
-                            </div>
-                            <div className="contact-form-group">
-                                <label htmlFor="nom" className="contact-form-label">
-                                    <FaUser className="icon" /> Nom
-                                </label>
-                                <input type="text" id="nom" className="contact-form-input" placeholder="Entrez votre nom" />
-                            </div>
-                        </div>
-                        <div className="contact-form-group">
-                            <label htmlFor="email" className="contact-form-label">
-                                <FaEnvelope className="icon" /> Email
-                            </label>
-                            <input type="email" id="email" className="contact-form-input" placeholder="Entrez votre email" />
-                        </div>
-                        <div className="contact-form-group">
-                            <label htmlFor="entreprise" className="contact-form-label">
-                                <FaBuilding className="icon" /> Entreprise
-                            </label>
-                            <input type="text" id="entreprise" className="contact-form-input" placeholder="Nom de votre entreprise" />
-                        </div>
-                        <div className="contact-form-group">
-                            <label htmlFor="terrains" className="contact-form-label">
-                                <FaMapMarkerAlt className="icon" /> Nombre de terrains
-                            </label>
-                            <select id="terrains" className="contact-form-select">
-                                <option value="1-2">1-2 terrains</option>
-                                <option value="3-5">3-5 terrains</option>
-                                <option value="6+">6+ terrains</option>
-                            </select>
-                        </div>
-                        <div className="contact-form-group">
-                            <label htmlFor="message" className="contact-form-label">
-                                <FaPaperPlane className="icon" /> Message (optionnel)
-                            </label>
-                            <textarea id="message" className="contact-form-textarea" placeholder="Partagez-nous vos besoins spécifiques..." rows="4" />
-                        </div>
-                        <button type="submit" className="contact-form-button">
-                            <FaPaperPlane className="button-icon" /> Envoyer
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </div>
+      <div className="contact-form__success" aria-live="polite">
+        <div className="contact-form__success-icon" aria-hidden="true">✓</div>
+        <h2 className="contact-form__success-title">Demande envoyée !</h2>
+        <p className="contact-form__success-message">Merci pour votre demande.<br/>Notre équipe va vous recontacter très prochainement.</p>
+        <button className="contact-form__back-button" onClick={() => { setSuccess(false); setForm({prenom:"",nom:"",email:"",entreprise:"","terrains":"1-2",message:""}); setErrors({}); }}>Retour</button>
+      </div>
     );
+  }
+
+  return (
+    <form className="contact-form" autoComplete="off" onSubmit={handleSubmit} aria-label="Formulaire de contact">
+      <div className="contact-form__row">
+        <div className="contact-form__group">
+          <label htmlFor="prenom" className="contact-form__label"><UserIcon className="contact-form__icon"/><span>Prénom et Nom</span></label>
+          <input type="text" className={`contact-form__input${errors.prenom?" contact-form__input--error":""}`} id="prenom" placeholder="Votre prénom" value={form.prenom} onChange={handleChange} onBlur={handleBlur} required aria-required="true" aria-invalid={errors.prenom?"true":"false"}/>
+          {errors.prenom && <span className="contact-form__error">{errors.prenom}</span>}
+        </div>
+      
+      </div>
+      <div className="contact-form__group">
+        <label htmlFor="email" className="contact-form__label"><EnvelopeIcon className="contact-form__icon"/><span>Email</span></label>
+        <input type="email" className={`contact-form__input${errors.email?" contact-form__input--error":""}`} id="email" placeholder="votre@email.com" value={form.email} onChange={handleChange} onBlur={handleBlur} required aria-required="true" aria-invalid={errors.email?"true":"false"}/>
+        {errors.email && <span className="contact-form__error">{errors.email}</span>}
+      </div>
+      <div className="contact-form__group">
+        <label htmlFor="entreprise" className="contact-form__label"><BuildingIcon className="contact-form__icon"/><span>Entreprise</span></label>
+        <input type="text" className={`contact-form__input${errors.entreprise?" contact-form__input--error":""}`} id="entreprise" placeholder="Nom de votre entreprise" value={form.entreprise} onChange={handleChange} onBlur={handleBlur} required aria-required="true" aria-invalid={errors.entreprise?"true":"false"}/>
+        {errors.entreprise && <span className="contact-form__error">{errors.entreprise}</span>}
+      </div>
+      <div className="contact-form__group">
+        <label htmlFor="terrains" className="contact-form__label"><MapPinIcon className="contact-form__icon"/><span>Nombre de terrains</span></label>
+        <select id="terrains" className="contact-form__select" value={form.terrains} onChange={handleChange}>
+          <option value="1-2">1-2 terrains</option>
+          <option value="3-5">3-5 terrains</option>
+          <option value="6+">6+ terrains</option>
+        </select>
+        <div className="contact-form__select-arrow"></div>
+      </div>
+      <div className="contact-form__group">
+        <label htmlFor="message" className="contact-form__label"><PaperPlaneIcon className="contact-form__icon"/><span>Message (optionnel)</span></label>
+        <textarea id="message" className="contact-form__textarea" placeholder="Partagez-nous vos besoins spécifiques..." rows={4} value={form.message} onChange={handleChange}></textarea>
+      </div>
+      <button type="submit" className={`contact-form__button${isSubmitting?" contact-form__button--loading":""}`} disabled={isSubmitting}>
+        {isSubmitting ? (<span className="contact-form__button-loader"/>) : (<><PaperPlaneIcon className="contact-form__button-icon"/><span>Envoyer</span></>)}
+      </button>
+    </form>
+  );
+}
+
+function ContactInfo() {
+  return (
+    <div className="contact-info" aria-label="Informations de contact">
+      <h2 className="contact-info__title">Nos coordonnées</h2>
+      <ul className="contact-info__list">
+        <li className="contact-info__item contact-info__item--location">
+          <div className="contact-info__icon-wrapper"><MapPinIcon className="contact-info__icon" /></div>
+          <div className="contact-info__content">
+            <h3 className="contact-info__subtitle">Adresse</h3>
+            <p className="contact-info__text">123 Avenue des Réservations<br/>75001 Paris, France</p>
+          </div>
+        </li>
+        <li className="contact-info__item contact-info__item--email">
+          <div className="contact-info__icon-wrapper"><EnvelopeIcon className="contact-info__icon" /></div>
+          <div className="contact-info__content">
+            <h3 className="contact-info__subtitle">Email</h3>
+            <a href="mailto:contact@example.com" className="contact-info__link">contact@example.com</a>
+          </div>
+        </li>
+        <li className="contact-info__item contact-info__item--phone">
+          <div className="contact-info__icon-wrapper"><PhoneIcon className="contact-info__icon" /></div>
+          <div className="contact-info__content">
+            <h3 className="contact-info__subtitle">Téléphone</h3>
+            <a href="tel:+33123456789" className="contact-info__link">+33 1 23 45 67 89</a>
+          </div>
+        </li>
+        <li className="contact-info__item contact-info__item--website">
+          <div className="contact-info__icon-wrapper"><GlobeIcon className="contact-info__icon" /></div>
+          <div className="contact-info__content">
+            <h3 className="contact-info__subtitle">Site Web</h3>
+            <a href="https://www.example.com" className="contact-info__link" target="_blank" rel="noopener noreferrer">
+              www.example.com
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div className="contact-info__hours">
+        <h3 className="contact-info__hours-title">Heures d'ouverture</h3>
+        <ul className="contact-info__hours-list">
+          <li className="contact-info__hours-item"><span className="contact-info__hours-day">Lundi - Vendredi</span><span className="contact-info__hours-time">9h00 - 18h00</span></li>
+          <li className="contact-info__hours-item"><span className="contact-info__hours-day">Samedi</span><span className="contact-info__hours-time">10h00 - 16h00</span></li>
+          <li className="contact-info__hours-item"><span className="contact-info__hours-day">Dimanche</span><span className="contact-info__hours-time">Fermé</span></li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// Page principale
+const Contact = () => {
+  // Mode sombre (bonus)
+  const [dark, setDark] = useState(false);
+  // Animation d’entrée
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 150);
+    if (dark) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+    return () => {
+      document.body.classList.remove("dark-mode");
+    };
+  }, [dark]);
+
+  return (
+    <div className={`contact-page${dark ? " contact--dark" : ""}${loaded ? " contact--loaded" : ""}`}>
+      <div className="contact-background">
+        <div className="contact-background-pattern" />
+        {/* Parallaxe subtil (bonus, facultatif) */}
+      </div>
+      <div className="contact-container">
+        <header className="contact-header">
+          <span className="contact-badge">Contactez-nous</span>
+          <h1 className="contact-title">Prêt à optimiser vos réservations ?</h1>
+          <p className="contact-description">Contactez-nous pour une démonstration personnalisée ou pour obtenir plus d'informations.</p>
+          <button className="contact-theme-toggle" onClick={() => setDark(d => !d)} aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}>{dark ? "☀️" : "🌙"}</button>
+        </header>
+        <main className="contact-content">
+          <section className="contact-form-section">
+            <ContactForm />
+          </section>
+          <section className="contact-info-section">
+            <ContactInfo />
+            <div className="contact-map-section"><ContactMap /></div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default Contact;

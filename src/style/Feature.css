@@ -134,7 +134,7 @@ html, body {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--footspace-green), #27ae60);
+  background: linear-gradient(90deg, var(--footspace-green), #025b12);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -159,7 +159,7 @@ html, body {
   background: var(--white);
   border-radius: var(--border-radius);
   padding: var(--card-padding);
-  box-shadow: 0 10px 30px rgba(2, 72, 13, 0.4);
+  box-shadow: 0 5px 15px rgba(8, 11, 8, 0.6);
   transition: var(--transition);
   opacity: 0;
   transform: translateY(20px);
