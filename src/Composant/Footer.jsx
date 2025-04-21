@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import "../style/Footer.css";
+import "../trop/footer.css";
 
 const Footer = () => {
   return (
