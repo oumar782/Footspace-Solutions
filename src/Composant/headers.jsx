@@ -92,7 +92,6 @@ const Header = () => {
             onClick={(e) => e.stopPropagation()}
           >
             
-              <span className="mobile-logo-text">FootSpace-Solutions</span>
             <ul className="mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.path} className="mobile-nav-item">

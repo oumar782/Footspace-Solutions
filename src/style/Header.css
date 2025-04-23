@@ -359,6 +359,9 @@
     height: 3.25rem;
     margin-right: 10px;
   }
+  .mobile-navigation-overlay {
+    width: 98%;
+  }
 
 }
 
@@ -367,28 +370,28 @@
   .header {
     height: 4.5rem;
   }
-
+  .mobile-navigation-overlay {
+    width: 98%;
+  }
+ 
   .header.scrolled {
     height: 4rem;
   }
 
-  .logo-text {
-    font-size: 0.95rem;
-    display: none;
-  }
 
   .logo-image {
     margin-right: 0;
+
   }
 
   .mobile-navigation {
     width: 75%;
     padding: 1rem;
   }
-
-  .mobile-logo-text {
-    font-size: 1rem;
+.logo-text{
+    font-size: 10px;
   }
+  
   .mobile-menu-toggle {
     
     margin-right: 10px;
@@ -411,7 +414,9 @@
   .header-container {
     padding: 0 0.75rem;
   }
-
+  .mobile-navigation-overlay {
+    width: 98%;
+  }
   .mobile-menu-toggle {
     padding: 0.5rem;
     width: 3.25rem;
