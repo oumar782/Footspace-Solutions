@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from '../assets/Image/Logo Diané (2).png';
-
 import "../style/Header.css";
 
 const Header = () => {
@@ -75,6 +74,7 @@ const Header = () => {
           className="mobile-menu-toggle"
           onClick={toggleMobileMenu}
           aria-expanded={isMobileMenuOpen}
+          aria-label="Menu mobile"
         >
           {isMobileMenuOpen ? (
             <X className="menu-icon" size={24} />
@@ -83,28 +83,23 @@ const Header = () => {
           )}
         </button>
 
-        <div className={`mobile-navigation-overlay ${isMobileMenuOpen ? "open" : ""}`}>
+        <div 
+          className={`mobile-navigation-overlay ${isMobileMenuOpen ? "open" : ""}`}
+          onClick={closeMobileMenu}
+        >
           <nav 
             className="mobile-navigation"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mobile-nav-header">
-              <img 
-                src={logo} 
-                alt="Logo" 
-                className="mobile-logo-image"
-                width="36"
-                height="36"
-              />
+            
               <span className="mobile-logo-text">FootSpace-Solutions</span>
-            </div>
             <ul className="mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.path} className="mobile-nav-item">
                   <Link
                     to={item.path}
                     className={`mobile-nav-link ${location.pathname === item.path ? "active" : ""}`}
-                    onClick={toggleMobileMenu}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>
