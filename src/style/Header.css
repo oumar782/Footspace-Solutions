@@ -353,9 +353,13 @@
     padding: 0.55rem 0.8rem;
   }
 
-  .mobile-logo-text {
-    font-size: 1.05rem;
+  .mobile-menu-toggle {
+    padding: 0.5rem;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-right: 10px;
   }
+
 }
 
 /* Petits mobiles (320px - 480px) */
@@ -384,6 +388,10 @@
 
   .mobile-logo-text {
     font-size: 1rem;
+  }
+  .mobile-menu-toggle {
+    
+    margin-right: 10px;
   }
 
   .mobile-nav-link {
@@ -433,7 +441,7 @@
   }
 
   .mobile-navigation {
-    width: 60%;
+    width: 75%;
     max-height: 100vh;
     overflow-y: auto;
   }
