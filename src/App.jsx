@@ -59,10 +59,10 @@ const App = () => {
           <Route path="/" element={<Navigate to="/accueil" />} />
           <Route path="/accueil" element={<Homepage />} />
           <Route path="/hero" element={<Hero />} />
-          <Route path="/features" element={<Features />} />
+          <Route path="/fonctionnalites" element={<Features />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/tarifs" element={<Tarifs />} />
-          <Route path="/personnaliser" element={<Personnalisable />} />
+          <Route path="/personnalisation" element={<Personnalisable />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Souscription" element={<SubscriptionModal />} />
           <Route path="/ima" element={<Images />} />

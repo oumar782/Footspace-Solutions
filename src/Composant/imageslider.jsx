@@ -35,14 +35,25 @@ const ImageSlider = () => {
             </p>
             
             <div className="hero-buttons">
-              <button className="hero-button hero-button-primary">
-                Découvrir la plateforme
-                <ArrowRight size={16} className="hero-button-icon" />
-              </button>
-              <button className="hero-button hero-button-secondary">
-                Demander une démo
-              </button>
-            </div>
+  {/* Bouton principal : "Découvrir la plateforme" */}
+  <a 
+    href="/fonctionnalites" 
+    className="hero-button hero-button-primary"
+    style={{ textDecoration: 'none' }} // Suppression du soulignement
+  >
+    Découvrir la plateforme
+    <ArrowRight size={16} className="hero-button-icon" />
+  </a>
+
+  {/* Bouton secondaire : "Demander une démo" */}
+  <a 
+    href="/contact" 
+    className="hero-button hero-button-secondary"
+    style={{ textDecoration: 'none' }} // Suppression du soulignement
+  >
+    Demander une démo
+  </a>
+</div>
             
             <div className="hero-features">
               {[{ icon: Calendar, text: "Calendrier intégré" }, { icon: Users, text: "Gestion d'équipe" }, { icon: Clock, text: "Réservations en ligne" }]

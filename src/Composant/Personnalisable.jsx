@@ -153,6 +153,7 @@ const Personnalisation = () => {
       backgroundColor: "#f8fafc",
       padding: "3rem 1rem",
       overflow: "hidden",
+      marginTop: "2.5rem",
     }}>
       {/* Fond décoratif avec animation subtile */}
       <div style={{
