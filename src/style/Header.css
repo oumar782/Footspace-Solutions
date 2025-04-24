@@ -1,4 +1,4 @@
-/* Header.css - Version Ultra HD 4K/8K avec responsivité premium */
+/* Header.css - Version Professionnelle avec responsivité premium */
 
 :root {
   --color-primary: #033d08;
@@ -6,7 +6,7 @@
   --color-text: #333333;
   --color-white: #ffffff;
   --color-bg: #ffffff;
-  --color-overlay: rgba(0, 0, 0, 0.85);
+  --color-overlay: rgba(0, 0, 0, 0.7);
   --gradient-start: #108816;
   --gradient-mid: #030d04;
   --gradient-end: #09560f;
@@ -176,56 +176,59 @@
   height: 1.5rem;
 }
 
-/* Menu mobile */
+/* Overlay étendu jusqu'au header */
 .mobile-navigation-overlay {
   position: fixed;
-  top: 0;
+  top: 0; /* Démarre depuis le haut de l'écran */
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Couvre toute la hauteur de l'écran */
   background-color: var(--color-overlay);
   backdrop-filter: blur(5px);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: flex-end;
-  
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1050; /* Au-dessus du header */
 }
 
 .mobile-navigation-overlay.open {
-  opacity: 3;
+  opacity: 1;
   visibility: visible;
 }
 
+/* Menu mobile inchangé */
 .mobile-navigation {
-  position: relative;
-  width: 85%;
-  max-width: 320px;
-  height: 100%;
+  position: absolute;
+  top: var(--header-height); /* Positionné sous le header */
+  left: 0;
+  width: 100%; /* Pleine largeur */
+  max-width: none; /* Suppression de la limite de largeur */
   background-color: var(--color-bg);
-  padding: 1.5rem;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
+  padding: 1rem;
+  transform: translateY(-100%); /* Masqué par défaut */
+  transition: transform 0.3s ease;
+  z-index: 1100; /* Au-dessus de l'overlay */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour séparer le menu du contenu */
+}
+
+.header.scrolled + .mobile-navigation-overlay.open .mobile-navigation {
+  top: var(--header-height-scrolled); /* Ajustement pour le header réduit */
 }
 
 .mobile-navigation-overlay.open .mobile-navigation {
-  transform: translateX(0);
+  transform: translateY(0); /* Affiché lors de l'ouverture */
 }
 
 .mobile-nav-header {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-
-
 .mobile-logo-text {
-  font-size: 10px;
+  font-size: 1.1rem;
   font-weight: 700;
   background: linear-gradient(
     90deg,
@@ -235,19 +238,16 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-left: 28px;
-  margin-bottom: -2px;
+  margin-left: 1rem;
 }
 
 .mobile-nav-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mobile-nav-item {
-  margin-bottom: 0.5rem;
+  gap: 1rem; /* Espacement entre les liens */
+  margin: 0;
+  padding: 0;
 }
 
 .mobile-nav-link {
@@ -256,7 +256,7 @@
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -285,13 +285,13 @@
   .header-container {
     padding: 0 1.5rem;
   }
-  
+
   .nav-list {
-    gap: 3rem;
+    gap: 1.25rem;
   }
 
   .logo-text {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .nav-link {
@@ -321,10 +321,16 @@
     font-size: 1.1rem;
   }
 
+  .mobile-navigation-overlay {
+    width: 98%;
+  }
+
   .mobile-navigation {
-    width: 80%;
-    max-width: 280px;
     padding: 1.25rem;
+  }
+
+  .mobile-nav-list {
+    gap: 0.8rem;
   }
 
   .mobile-nav-link {
@@ -339,13 +345,20 @@
     padding: 0 1rem;
   }
 
+  .mobile-navigation-overlay {
+    width: 98%;
+  }
+
   .logo-text {
     font-size: 1.1rem;
   }
 
   .mobile-navigation {
-    width: 78%;
-    max-width: 260px;
+    padding: 1rem;
+  }
+
+  .mobile-nav-list {
+    gap: 0.7rem;
   }
 
   .mobile-nav-link {
@@ -359,10 +372,6 @@
     height: 3.25rem;
     margin-right: 10px;
   }
-  .mobile-navigation-overlay {
-    width: 98%;
-  }
-
 }
 
 /* Petits mobiles (320px - 480px) */
@@ -370,43 +379,39 @@
   .header {
     height: 4.5rem;
   }
+
   .mobile-navigation-overlay {
     width: 98%;
   }
- 
+
   .header.scrolled {
     height: 4rem;
   }
 
-
   .logo-image {
     margin-right: 0;
-
   }
 
   .mobile-navigation {
-    width: 75%;
-    padding: 1rem;
+    padding: 0.75rem;
   }
-.logo-text{
-    font-size: 10px;
+
+  .logo-text {
+    font-size: 1rem;
   }
-  
+
   .mobile-menu-toggle {
-    
     margin-right: 10px;
+  }
+
+  .mobile-nav-list {
+    gap: 0.6rem;
   }
 
   .mobile-nav-link {
     font-size: 0.9rem;
     padding: 0.6rem 0.8rem;
-    margin-top: 40px; /* réduit l'espacement inutile */
   }
-  
-  .mobile-nav-item {
-    margin-bottom: 0.3rem; /* plus petit espace entre les liens */
-  }
-  
 }
 
 /* Très petits mobiles (moins de 320px) */
@@ -414,52 +419,13 @@
   .header-container {
     padding: 0 0.75rem;
   }
-  .mobile-navigation-overlay {
-    width: 98%;
-  }
-  .mobile-menu-toggle {
-    padding: 0.5rem;
-    width: 3.25rem;
-    height: 3.25rem;
-    margin-right: 10px;
-  }
-
-  .menu-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
 
   .mobile-navigation {
-    width: 90%;
-    padding: 0.9rem;
+    padding: 0.75rem; /* Réduction du padding intérieur */
   }
 
-  .mobile-nav-header {
-    margin-bottom: 1.25rem;
-  }
-}
-
-/* Orientation paysage mobile */
-@media screen and (orientation: landscape) and (max-width: 900px) {
-  .header {
-    height: 4rem;
-  }
-
-  .mobile-navigation {
-    width: 75%;
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-
-  .mobile-nav-item {
-    margin-bottom: 0.3rem;
-  }
-}
-
-/* Encoches & écrans pliables */
-@supports (padding-top: max(0px)) {
-  .header {
-    padding-left: max(1rem, env(safe-area-inset-left));
-    padding-right: max(1rem, env(safe-area-inset-right));
+  .mobile-nav-link {
+    font-size: 0.9rem; /* Taille de police réduite */
+    padding: 0.6rem 0.8rem; /* Réduction du padding des liens */
   }
 }
