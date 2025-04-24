@@ -34,7 +34,7 @@ const Header = () => {
     { path: "fonctionnalites", label: "Fonctionnalités" },
     { path: "/statistics", label: "Statistiques" },
     { path: "/tarifs", label: "Tarifs" },
-    { path: "/personnaliser", label: "Personnalisation" },
+    { path: "/personnalisation", label: "Personnalisation" },
     { path: "/contact", label: "Contact" }
   ];
 
