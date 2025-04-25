@@ -6,7 +6,9 @@ import {
   MessageSquare, 
   Clock, 
   Settings,
-  CheckCircle
+  CheckCircle,
+  Calendar as CalendarIcon,
+  BarChart
 } from 'lucide-react';
 import "../style/Feature.css";
 
@@ -16,14 +18,24 @@ const Features = () => {
   // Données des fonctionnalités
   const features = [
     {
-      icon: Calendar,
-      title: "Calendrier Intelligent",
-      description: "Planifiez facilement vos événements avec notre système de calendrier avancé et intuitif."
+      icon: CalendarIcon,
+      title: "Réservations Automatisées",
+      description: "Permettez à vos clients de réserver des créneaux horaires à tout moment, depuis n'importe quel appareil."
     },
     {
-      icon: CreditCard,
-      title: "Paiements Sécurisés",
-      description: "Traitez les paiements en toute sécurité avec notre système de paiement intégré et protégé."
+      icon: Clock,
+      title: "Gestion des Créneaux Horaires",
+      description: "Planifiez et gérez facilement vos créneaux horaires pour optimiser votre organisation et répondre à vos besoins spécifiques."
+    },
+    {
+      icon: Users,
+      title: "Gestion des clients",
+      description: "Constituez une base de données clients et fidélisez votre clientèle avec des offres personnalisées."
+    },
+    {
+      icon: BarChart,
+      title: "Analyse des revenus",
+      description: "Suivez vos performances financières et optimisez vos tarifs en fonction de la demande."
     },
     {
       icon: Users,
@@ -31,20 +43,16 @@ const Features = () => {
       description: "Gérez efficacement votre personnel et vos membres avec des outils de gestion d'équipe puissants."
     },
     {
-      icon: MessageSquare,
-      title: "Communication Centralisée",
-      description: "Gardez tout le monde informé grâce à notre système de communication centralisé."
-    },
-    {
-      icon: Clock,
-      title: "Réservations Automatisées",
-      description: "Automatisez vos réservations et éliminez les chevauchements de planification."
-    },
-    {
       icon: Settings,
       title: "Personnalisation Avancée",
       description: "Adaptez la plateforme à vos besoins spécifiques avec nos options de personnalisation avancées."
-    }
+    },
+    {
+      icon: CreditCard,
+      title: "Paiement intégré",
+      description: "Acceptez les paiements en ligne et sécurisez vos réservations avec des acomptes."
+    },
+ 
   ];
 
   // Gestion de la révélation des éléments lors du scroll
@@ -119,10 +127,10 @@ const Features = () => {
           </div>
           
           <h2 className="features-title">
-            Toutes les <span className="gradient-text">fonctionnalités</span> dont vous avez besoin
+            Toutes les <span className="gradient-text">fonctionnalités</span>  dont vous avez besoin pour gérer vos terrains
           </h2>
           <p className="features-subtitle">
-            Découvrez comment Footspace Solutions peut transformer la gestion de vos activités sportives
+          Footspace-Solutions combine des outils puissants et une interface intuitive pour optimiser la gestion de vos terrains de football.
           </p>
         </div>
 

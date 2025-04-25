@@ -27,11 +27,11 @@ const ImageSlider = () => {
             
             <h1 className="hero-title">
               <span>Transformez votre </span>
-              <span className="hero-title-gradient">expérience sportive</span>
+              <span className="hero-title-gradient">expérience de gestion de terrain </span>
             </h1>
             
             <p className="hero-description">
-              Simplifiez la gestion de vos activités sportives avec notre plateforme tout-en-un. Calendriers, réservations et paiements en un seul endroit.
+            Révolutionnez la gestion de vos terrains de football avec Footspace-Solutions. Simplifiez la réservation, optimisez vos créneaux et maximisez vos revenus, tout en offrant à vos clients une expérience moderne et fluide.
             </p>
             
             <div className="hero-buttons">

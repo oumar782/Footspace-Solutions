@@ -1,5 +1,6 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react'; // Icônes de lucide-react
+import { FaTiktok, FaWhatsapp } from 'react-icons/fa'; // Icônes spécifiques de Font Awesome
 import "../trop/footer.css";
 
 const Footer = () => {
@@ -17,17 +18,21 @@ const Footer = () => {
               Nous proposons des solutions innovantes pour la gestion des activités sportives et des installations.
             </p>
             <div className="social-icons">
-              <a href="#" className="social-icon">
+              {/* Facebook */}
+              <a href="https://web.facebook.com/profile.php?id=61573704854372" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="social-icon">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="social-icon">
+              {/* Instagram */}
+              <a href="https://www.instagram.com/footspacesolutions/" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="social-icon">
-                <Linkedin size={20} />
+              {/* TikTok */}
+              <a href="https://www.tiktok.com/@footspace.solutio?_t=ZM-8ujnK0kEDTD&_r=1" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <FaTiktok size={20} />
+              </a>
+              {/* WhatsApp */}
+              <a href="https://wa.me/+2120721976288" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <FaWhatsapp size={20} />
               </a>
             </div>
           </div>
@@ -64,14 +69,17 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Contact</h4>
             <ul className="contact-list">
+              {/* Adresse */}
               <li className="contact-item">
                 <MapPin size={18} className="contact-icon" />
                 <span className="contact-text">123 Avenue des Sports, 75000 Paris, France</span>
               </li>
+              {/* Téléphone */}
               <li className="contact-item">
                 <Phone size={18} className="contact-icon" />
                 <span className="contact-text">+33 1 23 45 67 89</span>
               </li>
+              {/* Email */}
               <li className="contact-item">
                 <Mail size={18} className="contact-icon" />
                 <span className="contact-text">contact@footspace-solutions.com</span>
