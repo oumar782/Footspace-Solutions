@@ -15,7 +15,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 100%);
-  padding: 4.5rem;
+  padding: clamp(2rem, 4.5vw, 6rem); /* Réduction du padding pour les petits écrans */
 `;
 
 const MainContent = styled.main`
@@ -23,7 +23,7 @@ const MainContent = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  padding: clamp(1rem, 2vw, 2rem) 0; /* Ajustement dynamique du padding */
 `;
 
 const ErrorCard = styled.div`
@@ -37,7 +37,7 @@ const ErrorCard = styled.div`
   text-align: center;
   position: relative;
   overflow: hidden;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -45,7 +45,12 @@ const ErrorCard = styled.div`
     left: 0;
     width: 100%;
     height: 6px;
-    background: linear-gradient(90deg,rgb(13, 148, 24),rgb(9, 168, 28));
+    background: linear-gradient(90deg, rgb(13, 148, 24), rgb(9, 168, 28));
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: clamp(1.5rem, 4vw, 3rem); /* Réduction du padding pour les tablettes et mobiles */
+    max-width: 90%; /* Largeur maximale ajustée pour les petits écrans */
   }
 `;
 
@@ -60,11 +65,16 @@ const FloatingIllustration = styled.div`
   justify-content: center;
   animation: ${float} 4s ease-in-out infinite;
   box-shadow: 0 8px 24px rgba(13, 148, 136, 0.1);
-  
+
   svg {
     width: 60%;
     height: 60%;
-    color:rgb(19, 146, 5);
+    color: rgb(19, 146, 5);
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: clamp(100px, 25vw, 150px); /* Taille réduite pour les petits écrans */
+    height: clamp(100px, 25vw, 150px);
   }
 `;
 
@@ -72,18 +82,26 @@ const ErrorCode = styled.h1`
   font-size: clamp(4rem, 15vw, 8rem);
   font-weight: 800;
   color: transparent;
-  background: linear-gradient(120deg,rgb(21, 129, 5),rgb(7, 101, 23));
+  background: linear-gradient(120deg, rgb(21, 129, 5), rgb(7, 101, 23));
   -webkit-background-clip: text;
   background-clip: text;
   line-height: 1;
   margin: 0.5rem 0;
+
+  @media only screen and (max-width: 768px) {
+    font-size: clamp(3rem, 12vw, 6rem); /* Réduction de la taille pour les petits écrans */
+  }
 `;
 
 const ErrorTitle = styled.h2`
   font-size: clamp(1.5rem, 5vw, 2.2rem);
-  color:rgb(15, 118, 34);
+  color: rgb(15, 118, 34);
   margin: 1rem 0;
   font-weight: 700;
+
+  @media only screen and (max-width: 768px) {
+    font-size: clamp(1.3rem, 4vw, 2rem); /* Réduction de la taille pour les petits écrans */
+  }
 `;
 
 const ErrorDescription = styled.p`
@@ -94,6 +112,11 @@ const ErrorDescription = styled.p`
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
+
+  @media only screen and (max-width: 768px) {
+    font-size: clamp(0.9rem, 3vw, 1rem); /* Réduction de la taille pour les petits écrans */
+    max-width: 95%; /* Largeur maximale ajustée pour les petits écrans */
+  }
 `;
 
 const ActionButton = styled(Link)`
@@ -101,7 +124,7 @@ const ActionButton = styled(Link)`
   align-items: center;
   justify-content: center;
   padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-  background: linear-gradient(135deg,rgb(13, 148, 15),rgb(12, 158, 25));
+  background: linear-gradient(135deg, rgb(13, 148, 15), rgb(12, 158, 25));
   color: white;
   border-radius: 12px;
   font-weight: 600;
@@ -117,6 +140,11 @@ const ActionButton = styled(Link)`
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(13, 148, 136, 0.4);
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-size: clamp(0.8rem, 3vw, 0.9rem); /* Réduction de la taille pour les petits écrans */
+    padding: clamp(0.6rem, 2.5vw, 0.9rem) clamp(1.2rem, 3vw, 1.8rem); /* Réduction du padding pour les petits écrans */
   }
 `;
 
@@ -139,6 +167,11 @@ const SearchContainer = styled.div`
       border-color: #0d9488;
       box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
     }
+
+    @media only screen and (max-width: 768px) {
+      max-width: 100%; /* Utilisation de la largeur maximale pour les petits écrans */
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem); /* Réduction de la taille pour les petits écrans */
+    }
   }
 `;
 
@@ -152,13 +185,13 @@ const NotFound = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </FloatingIllustration>
-          
+
           <ErrorCode>404</ErrorCode>
           <ErrorTitle>Oups ! Page introuvable</ErrorTitle>
           <ErrorDescription>
             Nous n'avons pas trouvé ce que vous cherchiez. La page peut avoir été déplacée ou n'existe plus.
           </ErrorDescription>
-          
+
           <ActionButton to="/accueil">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -166,8 +199,6 @@ const NotFound = () => {
             </svg>
             Retour à l'accueil
           </ActionButton>
-          
-          
         </ErrorCard>
       </MainContent>
     </PageContainer>
