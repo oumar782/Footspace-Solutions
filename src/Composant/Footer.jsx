@@ -86,7 +86,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> 
 
         {/* Bottom footer */}
         <div className="footer-bottom">
