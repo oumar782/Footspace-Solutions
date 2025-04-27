@@ -12,10 +12,10 @@ const Footer = () => {
           <div className="company-info">
             <h3 className="company-title">
               <span className="gradient-text">Footspace</span>
-              <span> Solutions</span>
+              <span> -Solutions</span>
             </h3>
             <p className="company-description">
-              Nous proposons des solutions innovantes pour la gestion des activités sportives et des installations.
+              Nous proposons des solutions innovantes pour la gestion de vos locations de vos terrains de foot. Notre plateforme vous aide à optimiser votre temps et à maximiser vos revenus.
             </p>
             <div className="social-icons">
               {/* Facebook */}
@@ -37,19 +37,26 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="footer-section">
-            <h4 className="footer-heading">Liens rapides</h4>
-            <ul className="footer-links">
-              {['Accueil', 'Fonctionnalités', 'Calendrier', 'Témoignages', 'Tarifs', 'Blog'].map((item) => (
-                <li key={item} className="footer-link-item">
-                  <a href="#" className="footer-link">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Quick Links */}
+<div className="footer-section">
+  <h4 className="footer-heading">Liens rapides</h4>
+  <ul className="footer-links">
+    {[
+      { name: 'Accueil', link: '/accueil' },
+      { name: 'Fonctionnalités', link: '/fonctionnalites' },
+      { name: 'statistiques', link: '/statistics' },
+      { name: 'Tarifs', link: '/tarifs' },
+      { name: 'Personnalisation', link: '/personnalisation' },
+      { name: 'Contact', link: '/contact' }
+    ].map((item) => (
+      <li key={item.name} className="footer-link-item">
+        <a href={item.link} className="footer-link">
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
 
           {/* Legal */}
           <div className="footer-section">
@@ -72,12 +79,12 @@ const Footer = () => {
               {/* Adresse */}
               <li className="contact-item">
                 <MapPin size={18} className="contact-icon" />
-                <span className="contact-text">123 Avenue des Sports, 75000 Paris, France</span>
+                <span className="contact-text">Rue de Bethune, Casablanca, Maroc</span>
               </li>
               {/* Téléphone */}
               <li className="contact-item">
                 <Phone size={18} className="contact-icon" />
-                <span className="contact-text">+33 1 23 45 67 89</span>
+                <span className="contact-text">+212 07 21 97 62 88</span>
               </li>
               {/* Email */}
               <li className="contact-item">

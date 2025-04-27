@@ -30,72 +30,8 @@ const GlobeIcon = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
 );
 
-function ContactMap() {
-  const mapRef = useRef();
-  useEffect(() => {
-    // Fallback si Google Maps n'est pas dispo
-    const fallbackMap = () => {
-      const mapElement = mapRef.current;
-      if (mapElement) {
-        mapElement.innerHTML = `
-          <div class="contact-map__fallback">
-            <div class="contact-map__fallback-message">
-              <p>Carte Google Maps non disponible.</p>
-              <p>Veuillez nous trouver à l'adresse :</p>
-              <p><strong>123 Avenue des Réservations, 75001 Paris, France</strong></p>
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=48.856614,2.3522219" 
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-map__fallback-link"
-              >
-                Ouvrir dans Google Maps
-              </a>
-            </div>
-          </div>
-        `;
-      }
-    };
-    if (window.google && window.google.maps) {
-      // API Google Maps disponible
-      const paris = { lat: 48.856614, lng: 2.3522219 };
-      const map = new window.google.maps.Map(mapRef.current, {
-        zoom: 15,
-        center: paris,
-        mapTypeId: "roadmap",
-        styles: [ { "featureType": "all", "elementType": "geometry.fill", "stylers": [{"weight": "2.00"}] }, { "featureType": "all", "elementType": "geometry.stroke", "stylers": [{"color": "#9c9c9c"}] }, { "featureType": "landscape", "elementType": "all", "stylers": [{"color": "#f2f2f2"}] }, { "featureType": "road", "elementType": "all", "stylers": [{"saturation": -100}, {"lightness": 45}] }, { "featureType": "water", "elementType": "all", "stylers": [{"color": "#b3dfdf"}, {"visibility": "on"}] }]
-      });
-      const marker = new window.google.maps.Marker({
-        position: paris,
-        map,
-        title: "Notre bureau",
-        animation: window.google.maps.Animation.DROP
-      });
-      const infoWindow = new window.google.maps.InfoWindow({
-        content: `
-          <div class="map-info-window">
-            <h3>Notre bureau</h3>
-            <p>123 Avenue des Réservations<br />75001 Paris, France</p>
-          </div>
-        `
-      });
-      marker.addListener('click', () => {
-        infoWindow.open({ anchor: marker, map });
-      });
-    } else {
-      fallbackMap();
-      // Pour l'utilisateur dev
-      console.log("Pour afficher la carte Google Maps, vous devez ajouter la clé API Google Maps dans le script de la page HTML.");
-    }
-  }, []);
-  return (
-    <div className="contact-map">
-      <div className="contact-map__container" ref={mapRef} aria-label="Google Map"></div>
-      <div className="contact-map__overlay"></div>
-    </div>
-  );
-}
 
+  
 function ContactForm() {
   const [form, setForm] = useState({
     prenom: "",
@@ -206,32 +142,24 @@ function ContactInfo() {
           <div className="contact-info__icon-wrapper"><MapPinIcon className="contact-info__icon" /></div>
           <div className="contact-info__content">
             <h3 className="contact-info__subtitle">Adresse</h3>
-            <p className="contact-info__text">123 Avenue des Réservations<br/>75001 Paris, France</p>
+            <p className="contact-info__text">Rue de Bethune, Casablanca, Maroc</p>
           </div>
         </li>
         <li className="contact-info__item contact-info__item--email">
           <div className="contact-info__icon-wrapper"><EnvelopeIcon className="contact-info__icon" /></div>
           <div className="contact-info__content">
             <h3 className="contact-info__subtitle">Email</h3>
-            <a href="mailto:contact@example.com" className="contact-info__link">contact@example.com</a>
+            <a href="mailto:contact@example.com" className="contact-info__link">contact@footspacesolutions.com</a>
           </div>
         </li>
         <li className="contact-info__item contact-info__item--phone">
           <div className="contact-info__icon-wrapper"><PhoneIcon className="contact-info__icon" /></div>
           <div className="contact-info__content">
             <h3 className="contact-info__subtitle">Téléphone</h3>
-            <a href="tel:+33123456789" className="contact-info__link">+33 1 23 45 67 89</a>
+            <a href="tel:+212 0721976288" className="contact-info__link">+212 0721976288 / 0688112830</a>
           </div>
         </li>
-        <li className="contact-info__item contact-info__item--website">
-          <div className="contact-info__icon-wrapper"><GlobeIcon className="contact-info__icon" /></div>
-          <div className="contact-info__content">
-            <h3 className="contact-info__subtitle">Site Web</h3>
-            <a href="https://www.example.com" className="contact-info__link" target="_blank" rel="noopener noreferrer">
-              www.example.com
-            </a>
-          </div>
-        </li>
+       
       </ul>
       <div className="contact-info__hours">
         <h3 className="contact-info__hours-title">Heures d'ouverture</h3>
@@ -275,7 +203,6 @@ const Contact = () => {
           <span className="contact-badge">Contactez-nous</span>
           <h1 className="contact-title">Prêt à optimiser vos réservations ?</h1>
           <p className="contact-description">Contactez-nous pour une démonstration personnalisée ou pour obtenir plus d'informations.</p>
-          <button className="contact-theme-toggle" onClick={() => setDark(d => !d)} aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}>{dark ? "☀️" : "🌙"}</button>
         </header>
         <main className="contact-content">
           <section className="contact-form-section">
@@ -283,7 +210,6 @@ const Contact = () => {
           </section>
           <section className="contact-info-section">
             <ContactInfo />
-            <div className="contact-map-section"><ContactMap /></div>
           </section>
         </main>
       </div>

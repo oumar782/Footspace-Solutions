@@ -85,15 +85,7 @@
     color: var(--text-light); font-size: 1.24rem; max-width: 500px; margin: 0 auto 0  auto;
     transform: translateY(18px); opacity:0; animation: slideUp .38s .36s forwards;
   }
-  .contact-theme-toggle {
-    position: fixed; top: 2.2rem; right: 2.2rem; background: var(--background-alt); color:var(--primary);
-    border: 1.5px solid var(--border); border-radius: 50%; width: 46px; height: 46px;
-    font-size: 1.43rem; box-shadow: var(--shadow); cursor: pointer; z-index: 20;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform var(--transition),background var(--transition),box-shadow var(--transition);
-    outline: none;
-  }
-  .contact-theme-toggle:hover { background: var(--primary); color: #fff; transform: scale(1.11); }
+  
   
   .contact-content {
     display: flex; flex-direction: column; gap: 2.9rem; margin-top: 2.4rem;
