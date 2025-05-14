@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../style/contact.css"; // Importation du fichier CSS pour le style
+import "../style/contact.css";
 
-// Icônes SVG en ligne pour éviter toute dépendance extérieure
+// Icônes SVG (inchangées)
 const UserIcon = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -39,13 +39,6 @@ const PhoneIcon = (props) => (
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
   </svg>
 );
-const GlobeIcon = (props) => (
-  <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="2" y1="12" x2="22" y2="12"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-  </svg>
-);
 const CheckCircleIcon = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -64,27 +57,61 @@ const LoaderIcon = (props) => (
   </svg>
 );
 
-// Composant Modal pour afficher les messages et le chargement
-const Modal = ({ message, type, isLoading, onClose }) => {
+// Composant Toast (temps réduit à 3s au lieu de 5s)
+const Toast = ({ message, type, onClose }) => {
+  const timerRef = useRef(null);
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      onClose();
+    }, 3000); // Réduit à 3 secondes
+    return () => {
+      clearTimeout(timerRef.current);
+    };
+  }, [onClose]);
+  return (
+    <div className={`toast toast--${type}`}>
+      <div className="toast__content">
+        {type === 'success' ? (
+          <CheckCircleIcon className="toast__icon" />
+        ) : (
+          <XIcon className="toast__icon" />
+        )}
+        <span className="toast__message">{message}</span>
+      </div>
+      <button className="toast__close" onClick={onClose}>
+        <XIcon className="toast__close-icon" />
+      </button>
+    </div>
+  );
+};
+
+// Composant Modal pour le chargement (temps réduit)
+const LoadingModal = ({ isVisible }) => {
+  if (!isVisible) return null;
+  
   return (
     <div className="modal-overlay">
-      <div className={`modal ${isLoading ? 'modal--loading' : `modal--${type}`}`}>
+      <div className="modal modal--loading">
         <div className="modal__content">
-          {isLoading ? (
-            <LoaderIcon className="modal__icon modal__icon--spin" />
-          ) : type === 'success' ? (
-            <CheckCircleIcon className="modal__icon" />
-          ) : (
-            <XIcon className="modal__icon" />
-          )}
-          {!isLoading && <span className="modal__message">{message}</span>}
+          <LoaderIcon className="modal__icon modal__icon--spin" />
         </div>
-        {!isLoading && (
-          <button className="modal__close" onClick={onClose}>
-            <XIcon className="modal__close-icon" />
-          </button>
-        )}
       </div>
+    </div>
+  );
+};
+
+// Gestionnaire de Toasts
+const ToastManager = ({ toasts, removeToast }) => {
+  return (
+    <div className="toast-container">
+      {toasts.map((toast) => (
+        <Toast
+          key={toast.id}
+          message={toast.message}
+          type={toast.type}
+          onClose={() => removeToast(toast.id)}
+        />
+      ))}
     </div>
   );
 };
@@ -98,14 +125,18 @@ function ContactForm() {
     message: ""
   });
   const [errors, setErrors] = useState({});
-  const [modal, setModal] = useState({ 
-    show: false, 
-    message: "", 
-    type: "", 
-    isLoading: false 
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toasts, setToasts] = useState([]);
 
-  // Validation simple pour prototype
+  const addToast = (message, type) => {
+    const id = Date.now();
+    setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
+  };
+
+  const removeToast = (id) => {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+  };
+
   const validate = () => {
     let err = {};
     if (!form.nom.trim()) err.nom = "Nom requis";
@@ -131,27 +162,25 @@ function ContactForm() {
     e.preventDefault();
     const err = validate();
     if (Object.keys(err).length === 0) {
-      setModal({
-        show: true,
-        message: "",
-        type: "",
-        isLoading: true
-      });
-      
+      setIsSubmitting(true);
       try {
-        const response = await fetch('http://localhost:5000/api/demonstrations/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            nom: form.nom,
-            email: form.email,
-            entreprise: form.entreprise,
-            nombreterrains: form.terrains,
-            message: form.message
+        // Simulation d'un temps de chargement réduit
+        const response = await Promise.race([
+          fetch('http://localhost:5000/api/demonstrations/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              nom: form.nom,
+              email: form.email,
+              entreprise: form.entreprise,
+              nombreterrains: form.terrains,
+              message: form.message
+            }),
           }),
-        });
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000)) // Timeout après 5s max
+        ]);
 
         if (!response.ok) {
           throw new Error('Erreur lors de l\'envoi de la demande');
@@ -159,14 +188,7 @@ function ContactForm() {
 
         const data = await response.json();
 
-        setModal({
-          show: true,
-          message: 'Votre demande de démonstration a été envoyée avec succès!',
-          type: 'success',
-          isLoading: false
-        });
-        
-        // Réinitialisation du formulaire après succès
+        addToast('Votre demande de démonstration a été envoyée avec succès!', 'success');
         setForm({
           nom: "",
           email: "",
@@ -176,48 +198,33 @@ function ContactForm() {
         });
       } catch (error) {
         console.error('Erreur:', error);
-        setModal({
-          show: true,
-          message: 'Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer.',
-          type: 'error',
-          isLoading: false
-        });
+        addToast(error.message.includes('Timeout') 
+          ? 'Le serveur met trop de temps à répondre' 
+          : 'Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer.', 
+        'error');
+      } finally {
+        setIsSubmitting(false);
       }
     } else {
       setErrors(err);
-      setModal({
-        show: true,
-        message: 'Veuillez corriger les erreurs dans le formulaire',
-        type: 'error',
-        isLoading: false
-      });
+      addToast('Veuillez corriger les erreurs dans le formulaire', 'error');
     }
-  };
-
-  const closeModal = () => {
-    setModal({ show: false, message: "", type: "", isLoading: false });
   };
 
   return (
     <>
-      {modal.show && (
-        <Modal 
-          message={modal.message} 
-          type={modal.type} 
-          isLoading={modal.isLoading}
-          onClose={closeModal} 
-        />
-      )}
+      <LoadingModal isVisible={isSubmitting} />
+      <ToastManager toasts={toasts} removeToast={removeToast} />
       <form className="contact-form" autoComplete="off" onSubmit={handleSubmit} aria-label="Formulaire de contact">
         <div className="contact-form__group">
           <label htmlFor="nom" className="contact-form__label">
-            <UserIcon className="contact-form__icon"/><span> Nom complet</span>
+            <UserIcon className="contact-form__icon"/><span>Nom complet</span>
           </label>
           <input
             type="text"
             className={`contact-form__input${errors.nom?" contact-form__input--error":""}`}
             id="nom"
-            placeholder="Veuillez saisir votre  nom complet"
+            placeholder="Veuillez saisir votre nom complet"
             value={form.nom}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -296,7 +303,7 @@ function ContactForm() {
         <button
           type="submit"
           className="contact-form__button"
-          disabled={modal.isLoading}
+          disabled={isSubmitting}
         >
           <PaperPlaneIcon className="contact-form__button-icon"/>
           <span>Envoyer</span>
@@ -306,6 +313,7 @@ function ContactForm() {
   );
 }
 
+// ContactInfo et Contact restent strictement inchangés
 function ContactInfo() {
   return (
     <div className="contact-info" aria-label="Informations de contact">
@@ -354,7 +362,6 @@ function ContactInfo() {
   );
 }
 
-// Page principale
 const Contact = () => {
   const [dark, setDark] = useState(false);
   const [loaded, setLoaded] = useState(false);
