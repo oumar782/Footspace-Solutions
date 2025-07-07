@@ -121,7 +121,7 @@ function ContactForm() {
     nom: "",
     email: "",
     entreprise: "",
-    terrains: "1-2",
+    terrains: "",
     message: ""
   });
   const [errors, setErrors] = useState({});
@@ -193,7 +193,7 @@ function ContactForm() {
           nom: "",
           email: "",
           entreprise: "",
-          terrains: "1-2",
+          terrains: "",
           message: ""
         });
       } catch (error) {

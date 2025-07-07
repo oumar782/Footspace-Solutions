@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Calendar, Clock, Users, ChevronDown } from 'lucide-react';
 import "../style/ims.css";
-import logos from "../assets/Image/ChatGPT Image 16 avr. 2025, 18_26_14.png"; // Mise à jour du chemin
+import logos from "../assets/Image/photo.png"; // Mise à jour du chemin
 
 const ImageSlider = () => {
   const scrollToFeatures = () => {
@@ -22,7 +22,7 @@ const ImageSlider = () => {
           <div className="hero-content">
             <div className="hero-badge">
               <span className="hero-badge-emoji">🌱</span>
-              <span className="hero-badge-text">La gestion sportive simplifiée</span>
+              <span className="hero-badge-text">La gestion de vos terrains de football simplifiée</span>
             </div>
             
             <h1 className="hero-title">
