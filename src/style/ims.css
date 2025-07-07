@@ -301,6 +301,7 @@
 .hero-image-container {
   position: relative;
   perspective: 1200px;
+  margin-top: 50px;
 }
 
 .hero-image-wrapper {
