@@ -43,45 +43,64 @@ export default function Statistics() {
   return (
     <section className="statistics-section">
       <div className="containert">
-        <div className="headert">
-          <div className="badgetss">Résultats</div>
-          <h2>Optimisez vos performances</h2>
-          <p>Suivez et améliorez vos indicateurs clés grâce à nos tableaux de bord analytiques.</p>
+        <div className="section-header">
+          <div className="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            Résultats
+          </div>
+          <h2 className="section-title">Optimisez vos performances</h2>
+          <p className="section-description">
+            Suivez et améliorez vos indicateurs clés grâce à nos tableaux de bord analytiques.
+          </p>
         </div>
 
         <div className="stats-grid">
           {stats.map((stat, index) => (
             <div className="stat-card" key={index}>
-              <div className="stat-header">
+              <div className="stat-content">
                 <h3>{stat.title}</h3>
                 <p>{stat.description}</p>
+                <div className="stat-value">
+                  {stat.value}
+                  {stat.value.includes('%') && <span>%</span>}
+                </div>
               </div>
-              <div className="stat-value">{stat.value}</div>
             </div>
           ))}
         </div>
 
         <div className="chart-container">
           <div className="tabs-header">
-            <h3>L'evolution des performances de votre entreprise avec <span>FootSpace-Solutions</span></h3>
-            <div className="tabs-list">
+            <h3 className="tabs-title">L'évolution des performances <span>avec FootSpace-Solutions</span></h3>
+            <div className="tabs-nav">
               <button 
                 onClick={() => setActiveTab("weekly")} 
-                className={activeTab === "weekly" ? "active" : ""}
+                className={`tab-btn ${activeTab === "weekly" ? "active" : ""}`}
               >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
                 Hebdomadaire
               </button>
               <button 
                 onClick={() => setActiveTab("monthly")} 
-                className={activeTab === "monthly" ? "active" : ""}
+                className={`tab-btn ${activeTab === "monthly" ? "active" : ""}`}
               >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
                 Mensuelle
               </button>
             </div>
           </div>
 
-          <div className="chart-scroll-container">
-            <div className="chart-card">
+          <div className="chart-content">
+            <div className="chart-wrapper">
               {activeTab === "monthly" && (
                 <ResponsiveContainer width="100%" height={450}>
                   <BarChart 
@@ -89,33 +108,35 @@ export default function Statistics() {
                     margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
                     barSize={32}
                   >
-                    <CartesianGrid vertical={false} />
+                    <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#f0f0f0" />
                     <XAxis 
                       dataKey="name" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <YAxis 
                       yAxisId="left" 
                       orientation="left" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <YAxis 
                       yAxisId="right" 
                       orientation="right" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <Tooltip 
                       cursor={{ fill: 'rgba(8, 99, 16, 0.05)' }}
                       contentStyle={{
+                        background: '#ffffff',
                         border: 'none',
                         borderRadius: '12px',
-                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)'
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)',
+                        padding: '12px'
                       }}
                     />
                     <Bar 
@@ -142,33 +163,35 @@ export default function Statistics() {
                     margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
                     barSize={32}
                   >
-                    <CartesianGrid vertical={false} />
+                    <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#f0f0f0" />
                     <XAxis 
                       dataKey="name" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <YAxis 
                       yAxisId="left" 
                       orientation="left" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <YAxis 
                       yAxisId="right" 
                       orientation="right" 
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#6b7280' }}
+                      tick={{ fill: '#6b7280', fontSize: 12 }}
                     />
                     <Tooltip 
                       cursor={{ fill: 'rgba(8, 99, 16, 0.05)' }}
                       contentStyle={{
+                        background: '#ffffff',
                         border: 'none',
                         borderRadius: '12px',
-                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)'
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)',
+                        padding: '12px'
                       }}
                     />
                     <Bar 

@@ -91,7 +91,6 @@ const Header = () => {
             className="mobile-navigation"
             onClick={(e) => e.stopPropagation()}
           >
-            
             <ul className="mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.path} className="mobile-nav-item">

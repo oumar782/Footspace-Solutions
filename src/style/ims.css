@@ -74,7 +74,7 @@
   padding: 7rem 0 5rem;
   overflow: hidden;
   width: 100%;
-  margin: 0;
+  margin-top: 30px;
   background-color: var(--gray-50);
   background-image: radial-gradient(circle at 25% 50%, rgba(4, 77, 13, 0.03) 0%, transparent 50%);
   contain: paint;
@@ -324,6 +324,7 @@
   aspect-ratio: 16/9;
   max-width: 100%;
   height: auto;
+  
 }
 
 .hero-image-wrapper:hover {

@@ -13,6 +13,8 @@ import Contact from "./Composant/Contact.jsx";
 import Homepage from "./Pages/Homepage.jsx";
 import SubscriptionModal from "./Pages/SubscriptionModal.jsx";
 import Images from "./Composant/imageslider.jsx";
+import Bandeau from "./Composant/Bandeau.jsx";
+
 import NotFound from "./Pages/NotFound"; // Import du nouveau composant 404
 
 const GA_TRACKING_ID = "G-P73M64BH0Q";
@@ -42,17 +44,11 @@ const App = () => {
       <TrackPageView />
       {/* Styles globaux pour éviter les barres de défilement horizontales */}
       <style>
-        {`
-          body, html {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Empêche le défilement horizontal */
-          }
-          .main-content {
-            min-height: calc(100vh - 150px); /* Ajustez selon la hauteur de votre header et footer */
-          }
-        `}
+       
       </style>
+      <div style={{ paddingTop: '54px' }}> {/* Compensation pour le bandeau */}
+      </div>
+      <Bandeau />
       <Header />
       <div className="main-content">
         <Routes>
@@ -64,6 +60,7 @@ const App = () => {
           <Route path="/tarifs" element={<Tarifs />} />
           <Route path="/personnalisation" element={<Personnalisable />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/bandeau" element={<Bandeau />} />
           <Route path="/Souscription" element={<SubscriptionModal />} />
           <Route path="/ima" element={<Images />} />
           {/* Route 404 - doit être la dernière */}
