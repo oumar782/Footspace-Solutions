@@ -189,7 +189,7 @@ const Personnalisation = () => {
         backgroundColor: "#f8fafc",
         padding: "3rem 1rem",
         overflow: "hidden",
-        margin: "0",
+        marginTop: "90px", // J'ai ajouté "px" qui manquait
         isolation: "isolate"
       }}
     >
@@ -434,14 +434,11 @@ const Personnalisation = () => {
               zIndex: 1
             }}>
               <div style={{
-                display: "flex",
-                gap: "0.5rem",
-                marginBottom: "1.5rem",
-                overflowX: "auto",
-                paddingBottom: "0.75rem",
-                scrollbarWidth: "thin",
-                scrollbarColor: `${colors[selectedColor].primary} #f1f5f9`,
-                WebkitOverflowScrolling: "touch"
+              display: "flex",
+              flexWrap: "wrap", // Permet le retour à la ligne sur petits écrans
+              gap: "0.5rem",
+              marginBottom: "1.5rem",
+              paddingBottom: "0.75rem"
               }} className="tab-buttons">
                 {['colors', 'fonts', 'branding'].map((tab) => (
                   <button
