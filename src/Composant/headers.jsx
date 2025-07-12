@@ -77,9 +77,9 @@ const Header = () => {
           aria-label="Menu mobile"
         >
           {isMobileMenuOpen ? (
-            <X className="menu-icon" size={24} />
+            <X className="menu-icon" size={65} />
           ) : (
-            <Menu className="menu-icon" size={24} />
+            <Menu className="menu-icon" size={65} />
           )}
         </button>
 
@@ -91,6 +91,8 @@ const Header = () => {
             className="mobile-navigation"
             onClick={(e) => e.stopPropagation()}
           >
+          
+           
             <ul className="mobile-nav-list">
               {navItems.map((item) => (
                 <li key={item.path} className="mobile-nav-item">

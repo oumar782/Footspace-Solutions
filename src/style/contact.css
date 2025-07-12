@@ -954,6 +954,7 @@ ol {
 @media (max-width: 480px) {
   .contact-page {
     padding: var(--space-md);
+    margin-top: 50px;
   }
   
   .toast {

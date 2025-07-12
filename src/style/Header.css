@@ -286,8 +286,8 @@
   );
   border: none;
   border-radius: var(--border-radius);
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem; /* Taille augmentée pour accommoder la grande icône */
+  height: 4rem; /* Taille augmentée pour accommoder la grande icône */
   cursor: pointer;
   z-index: 1100;
   box-shadow: var(--shadow-sm);
@@ -368,8 +368,8 @@
 
 .menu-icon {
   color: var(--color-white);
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 32rem; /* Ajusté pour size={32} */
+  height: 32rem; /* Ajusté pour size={32} */
   z-index: 1;
   transition: var(--transition-base);
   position: relative;
@@ -491,6 +491,45 @@
 .mobile-navigation-overlay.open .mobile-navigation {
   transform: translateY(0) scale(1);
   opacity: 1;
+}
+
+/* Bouton de fermeture mobile */
+.mobile-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.mobile-close-btn:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: var(--shadow-md), var(--glow-effect);
+}
+
+.mobile-close-icon {
+  color: var(--color-white);
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: var(--transition-fast);
+}
+
+.mobile-close-btn:hover .mobile-close-icon {
+  transform: scale(1.2);
 }
 
 .mobile-nav-header {
@@ -688,6 +727,12 @@
     padding: 1.15rem 1.25rem;
     font-size: 1.1rem;
   }
+
+  .mobile-nav-icon {
+    margin-right: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
 }
 
 /* Mobiles standards (481px - 599px) */
@@ -710,6 +755,11 @@
     width: 1.4rem;
     height: 1.4rem;
   }
+
+  .mobile-close-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
 }
 
 /* Petits mobiles (320px - 480px) */
@@ -719,8 +769,8 @@
   }
 
   .mobile-menu-toggle {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   .mobile-navigation {
@@ -737,6 +787,13 @@
     width: 1.3rem;
     height: 1.3rem;
     margin-right: 0.9rem;
+  }
+
+  .mobile-close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 1rem;
+    right: 1rem;
   }
 }
 

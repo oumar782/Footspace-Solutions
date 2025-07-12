@@ -646,6 +646,7 @@ button:hover::before {
 @media (max-width: 768px) {
   .pricing-section {
     padding: var(--spacing-md) 0;
+    margin-top: 5rem;
   }
   
   .headerz h2 {
