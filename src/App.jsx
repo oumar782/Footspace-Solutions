@@ -14,6 +14,7 @@ import Homepage from "./Pages/Homepage.jsx";
 import SubscriptionModal from "./Pages/SubscriptionModal.jsx";
 import Images from "./Composant/imageslider.jsx";
 import Bandeau from "./Composant/Bandeau.jsx";
+import Modal from "./Composant/modal.jsx";
 
 import NotFound from "./Pages/NotFound"; // Import du nouveau composant 404
 
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/bandeau" element={<Bandeau />} />
           <Route path="/Souscription" element={<SubscriptionModal />} />
           <Route path="/ima" element={<Images />} />
+          <Route path="/Commingsoon" element={<Modal />} />
           {/* Route 404 - doit être la dernière */}
           <Route path="*" element={<NotFound />} />
         </Routes>
