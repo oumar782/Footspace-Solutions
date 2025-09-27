@@ -215,7 +215,7 @@ function ContactForm() {
     try {
       // Simulation d'envoi avec timeout
       const response = await Promise.race([
-        fetch('http://localhost:5000/api/demonstrations/', {
+        fetch('https://backend-foot-omega.vercel.app/api/demonstration/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
