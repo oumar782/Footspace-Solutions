@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Calendar, Clock, Users, ChevronDown } from 'lucide-react';
 import "../style/ims.css";
-import logos from "../assets/Image/photo.png"; // Mise à jour du chemin
+import logos from "../assets/Image/saas.png"; // Mise à jour du chemin
 
 const ImageSlider = () => {
   const scrollToFeatures = () => {
