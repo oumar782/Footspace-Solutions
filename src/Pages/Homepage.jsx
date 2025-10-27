@@ -6,7 +6,6 @@ import Statistics from "../Composant/Statistics";
 import Tarifs from "../Composant/Tarif";
 import Personnalisable from "../Composant/Personnalisable";
 import Contact from "../Composant/Contact";
-import Modal from "../Composant/modal.jsx";
 
 const Homepages = () => {
   const [showModal, setShowModal] = useState(true);
@@ -17,7 +16,6 @@ const Homepages = () => {
 
   return (
     <>
-      {showModal && <Modal onClose={closeModal} />}
       
       <div className="page-wrapper">
         <Header showBandeau={true} />
