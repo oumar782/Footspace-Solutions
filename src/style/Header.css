@@ -14,7 +14,7 @@
   --gradient-end: #033d08;
   --header-height: 5.5rem;
   --header-height-scrolled: 4.5rem;
-  --nav-spacing: 1.75rem;
+  --nav-spacing: 2.2rem;
   --transition-base: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 0.75rem;
@@ -97,7 +97,7 @@
 }
 
 .logo-text {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: 800;
   font-family: 'Poppins', system-ui, -apple-system, sans-serif;
   background: linear-gradient(
@@ -109,9 +109,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   position: relative;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   transition: var(--transition-base);
   transform-origin: left center;
   line-height: 1.2;
@@ -286,8 +286,8 @@
   );
   border: none;
   border-radius: var(--border-radius);
-  width: 4rem; /* Taille augmentée pour accommoder la grande icône */
-  height: 4rem; /* Taille augmentée pour accommoder la grande icône */
+  width: 5.5rem; /* Taille augmentée pour accommoder les icônes de 75px */
+  height: 5.5rem; /* Taille augmentée pour accommoder les icônes de 75px */
   cursor: pointer;
   z-index: 1100;
   box-shadow: var(--shadow-sm);
@@ -368,9 +368,8 @@
 
 .menu-icon {
   color: var(--color-white);
-  width: 32rem; /* Ajusté pour size={32} */
-  height: 32rem; /* Ajusté pour size={32} */
-  z-index: 1;
+  width: 75px; /* Augmenté pour meilleure visibilité */
+  height: 75px; /* Augmenté pour meilleure visibilité */
   transition: var(--transition-base);
   position: relative;
 }
@@ -811,6 +810,585 @@
   .mobile-nav-link {
     padding: 0.8rem 0.9rem;
     font-size: 0.95rem;
+  }
+
+  .logo-image {
+    height: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .menu-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ==================== */
+/* RESPONSIVITÉ ULTRA PREMIUM - TRÈS HAUTE QUALITÉ */
+/* ==================== */
+
+/* Ultra larges (4K et plus) */
+@media only screen and (min-width: 2560px) {
+  .header {
+    --header-height: 6rem;
+    --header-height-scrolled: 5rem;
+  }
+
+  .header-container {
+    padding: 0 6rem;
+    max-width: 2400px;
+  }
+
+  .logo-text {
+    font-size: 2rem;
+  }
+
+  .logo-image {
+    height: 3.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+  }
+
+  .nav-list {
+    gap: 2.5rem;
+  }
+}
+
+/* Grands écrans (1920px - 2559px) */
+@media only screen and (min-width: 1920px) and (max-width: 2559px) {
+  .header-container {
+    padding: 0 5rem;
+    max-width: 1800px;
+  }
+
+  .logo-text {
+    font-size: 1.9rem;
+  }
+
+  .logo-image {
+    height: 3.2rem;
+  }
+
+  .nav-link {
+    font-size: 1.15rem;
+  }
+
+  .nav-list {
+    gap: 2.2rem;
+  }
+}
+
+/* Desktop XL (1440px - 1919px) */
+@media only screen and (min-width: 1440px) and (max-width: 1919px) {
+  .header-container {
+    padding: 0 4rem;
+    max-width: 1400px;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+
+  .logo-image {
+    height: 3rem;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+  }
+
+  .nav-list {
+    gap: 2rem;
+  }
+}
+
+/* Desktop L (1200px - 1439px) */
+@media only screen and (min-width: 1200px) and (max-width: 1439px) {
+  .header-container {
+    padding: 0 3rem;
+  }
+
+  .logo-text {
+    font-size: 1.7rem;
+  }
+
+  .logo-image {
+    height: 2.8rem;
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+  }
+
+  .nav-list {
+    gap: 1.8rem;
+  }
+}
+
+/* Tablettes XL (1024px - 1199px) */
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  .header-container {
+    padding: 0 2.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+  }
+
+  .logo-image {
+    height: 2.6rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  .nav-list {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablettes L (900px - 1023px) */
+@media only screen and (min-width: 900px) and (max-width: 1023px) {
+  .header-container {
+    padding: 0 2rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .logo-image {
+    height: 2.4rem;
+    margin-right: 0.7rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+  }
+
+  .nav-list {
+    gap: 1.3rem;
+  }
+}
+
+/* Tablettes M (768px - 899px) */
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .header-container {
+    padding: 0 1.8rem;
+  }
+
+  .logo-text {
+    font-size: 1.4rem;
+  }
+
+  .logo-image {
+    height: 2.2rem;
+    margin-right: 0.6rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+  }
+
+  .nav-list {
+    gap: 1.2rem;
+  }
+}
+
+/* Mobiles XL (600px - 767px) - Amélioré */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .header {
+    --header-height: 5rem;
+    --header-height-scrolled: 4rem;
+  }
+
+  .header-container {
+    padding: 0 1.75rem;
+  }
+
+  .logo-text {
+    font-size: 1.35rem;
+  }
+
+  .logo-image {
+    height: 2rem;
+    margin-right: 0.6rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .menu-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .mobile-navigation {
+    padding: 2rem 1.5rem;
+    max-width: 380px;
+  }
+
+  .mobile-nav-link {
+    padding: 1.15rem 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  .mobile-nav-icon {
+    margin-right: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+/* Mobiles L (500px - 599px) - Amélioré */
+@media only screen and (min-width: 500px) and (max-width: 599px) {
+  .header {
+    --header-height: 4.8rem;
+    --header-height-scrolled: 3.8rem;
+  }
+
+  .header-container {
+    padding: 0 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+
+  .logo-image {
+    height: 1.8rem;
+    margin-right: 0.5rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+
+  .menu-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .mobile-navigation {
+    padding: 1.75rem 1.25rem;
+    max-width: 350px;
+  }
+
+  .mobile-nav-link {
+    padding: 1rem 1.15rem;
+    font-size: 1.05rem;
+  }
+
+  .mobile-nav-icon {
+    margin-right: 1rem;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  .mobile-close-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+/* Mobiles M (400px - 499px) - Amélioré */
+@media only screen and (min-width: 400px) and (max-width: 499px) {
+  .header {
+    --header-height: 4.5rem;
+    --header-height-scrolled: 3.5rem;
+  }
+
+  .header-container {
+    padding: 0 1.3rem;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .logo-image {
+    height: 1.6rem;
+    margin-right: 0.4rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .menu-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .mobile-navigation {
+    width: 92%;
+    padding: 1.5rem 1rem;
+    max-width: 320px;
+  }
+
+  .mobile-nav-link {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+  }
+
+  .mobile-nav-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.8rem;
+  }
+
+  .mobile-close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Mobiles S (350px - 399px) - Amélioré */
+@media only screen and (min-width: 350px) and (max-width: 399px) {
+  .header {
+    --header-height: 4.2rem;
+    --header-height-scrolled: 3.2rem;
+  }
+
+  .header-container {
+    padding: 0 1.2rem;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .logo-image {
+    height: 1.4rem;
+    margin-right: 0.3rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+
+  .menu-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .mobile-navigation {
+    width: 94%;
+    padding: 1.3rem 0.8rem;
+    max-width: 300px;
+  }
+
+  .mobile-nav-link {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .mobile-nav-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.7rem;
+  }
+
+  .mobile-close-btn {
+    width: 2.3rem;
+    height: 2.3rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+}
+
+/* Mobiles XS (320px - 349px) - Amélioré */
+@media only screen and (min-width: 320px) and (max-width: 349px) {
+  .header {
+    --header-height: 4rem;
+    --header-height-scrolled: 3rem;
+  }
+
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .logo-image {
+    height: 1.2rem;
+    margin-right: 0.25rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .menu-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mobile-navigation {
+    width: 95%;
+    padding: 1.2rem 0.7rem;
+    max-width: 280px;
+  }
+
+  .mobile-nav-link {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .mobile-nav-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.6rem;
+  }
+
+  .mobile-close-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    top: 0.7rem;
+    right: 0.7rem;
+  }
+}
+
+/* Ultra petits mobiles (moins de 320px) */
+@media only screen and (max-width: 319px) {
+  .header {
+    --header-height: 3.8rem;
+    --header-height-scrolled: 2.8rem;
+  }
+
+  .header-container {
+    padding: 0 0.8rem;
+  }
+
+  .logo-text {
+    font-size: 0.9rem;
+  }
+
+  .logo-image {
+    height: 1rem;
+    margin-right: 0.2rem;
+  }
+
+  .mobile-menu-toggle {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .menu-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobile-navigation {
+    width: 98%;
+    padding: 1rem 0.5rem;
+    max-width: 260px;
+  }
+
+  .mobile-nav-link {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-nav-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
+  .mobile-close-btn {
+    width: 2rem;
+    height: 2rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* Orientation paysage spécifique */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+  .header {
+    --header-height: 3.5rem;
+    --header-height-scrolled: 2.8rem;
+  }
+
+  .mobile-navigation {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .mobile-nav-link {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* High DPI/Retina displays */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .logo-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .menu-icon {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .logo-link,
+  .nav-link,
+  .mobile-menu-toggle,
+  .mobile-navigation {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mode contraste élevé */
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  .nav-link {
+    font-weight: 700;
+  }
+
+  .mobile-menu-toggle {
+    border: 2px solid var(--color-white);
+  }
+
+  .mobile-nav-link {
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
 

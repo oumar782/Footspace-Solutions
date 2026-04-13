@@ -33,7 +33,7 @@ const Header = () => {
     { path: "/accueil", label: "Accueil" },
     { path: "/fonctionnalites", label: "Fonctionnalités" },
     { path: "/statistics", label: "Statistiques" },
-    { path: "/tarifs", label: "Tarifs" },
+    { path: "/abonnements", label: "Abonnements" },
     { path: "/personnalisation", label: "Personnalisation" },
     { path: "/contact", label: "Contact" }
   ];

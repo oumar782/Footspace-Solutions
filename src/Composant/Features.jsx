@@ -8,19 +8,34 @@ import {
   Settings,
   CheckCircle,
   Calendar as CalendarIcon,
-  BarChart
+  BarChart,
+  Target,
+  TrendingUp,
+  Shield,
+  Zap,
+  Globe,
+  CalendarCheck,
+  LineChart,
+  UserCheck,
+  Activity,
+  XCircle
 } from 'lucide-react';
 import "../style/Feature.css";
 
 const Features = () => {
   const featuresRef = useRef(null);
 
-  // Données des fonctionnalités
+  // Données des fonctionnalités avec les bonnes icônes
   const features = [
     {
-      icon: CalendarIcon,
+      icon: CalendarCheck,
       title: "Réservations Automatisées",
       description: "Permettez à vos clients de réserver des créneaux horaires à tout moment, depuis n'importe quel appareil."
+    },
+    {
+      icon: TrendingUp,
+      title: "Prévision de réservations",
+      description: "Anticipez la demande et optimisez votre planning avec nos prévisions IA"
     },
     {
       icon: Clock,
@@ -28,9 +43,9 @@ const Features = () => {
       description: "Planifiez et gérez facilement vos créneaux horaires pour optimiser votre organisation et répondre à vos besoins spécifiques."
     },
     {
-      icon: Users,
-      title: "Gestion des clients",
-      description: "Constituez une base de données clients et fidélisez votre clientèle avec des offres personnalisées."
+      icon: UserCheck,
+      title: "Gestion et analyse des abonnements",
+      description: "Constituez une base de données Abonnés et analysez vos abonnements."
     },
     {
       icon: BarChart,
@@ -38,21 +53,20 @@ const Features = () => {
       description: "Suivez vos performances financières et optimisez vos tarifs en fonction de la demande."
     },
     {
-      icon: Users,
-      title: "Gestion d'Équipe",
-      description: "Gérez efficacement votre personnel et vos membres avec des outils de gestion d'équipe puissants."
+      icon: Activity,
+      title: "Suivi d'occupation de terrains",
+      description: "Suivez en temps réel l'occupation de vos terrains pour optimiser leur utilisation."
+    },
+    {
+      icon: XCircle,
+      title: "Suivi des annulations",
+      description: "Suivez en temps réel les annulations des réservations pour optimiser votre planning et éviter les créneaux vides."
     },
     {
       icon: Settings,
       title: "Personnalisation Avancée",
       description: "Adaptez la plateforme à vos besoins spécifiques avec nos options de personnalisation avancées."
     },
-    {
-      icon: CreditCard,
-      title: "Paiement intégré",
-      description: "Acceptez les paiements en ligne et sécurisez vos réservations avec des acomptes."
-    },
- 
   ];
 
   // Gestion de la révélation des éléments lors du scroll
@@ -127,10 +141,10 @@ const Features = () => {
           </div>
           
           <h2 className="features-title">
-            Toutes les <span className="gradient-text">fonctionnalités</span>  dont vous avez besoin pour gérer vos terrains
+            Toutes les <span className="gradient-text">fonctionnalités</span> dont vous avez besoin pour gérer vos terrains
           </h2>
           <p className="features-subtitle">
-          Footspace-Solutions combine des outils puissants et une interface intuitive pour optimiser la gestion de vos terrains de football.
+            Footspace-Solutions combine des outils puissants et une interface intuitive pour optimiser la gestion de vos terrains de football.
           </p>
         </div>
 

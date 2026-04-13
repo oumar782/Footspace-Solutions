@@ -14,6 +14,7 @@ import Homepage from "./Pages/Homepage.jsx";
 import SubscriptionModal from "./Pages/SubscriptionModal.jsx";
 import Images from "./Composant/imageslider.jsx";
 import Bandeau from "./Composant/Bandeau.jsx";
+import Abonnement from "./Pages/Abonnement.jsx";
 import Modal from "./Composant/modal.jsx";
 
 import NotFound from "./Pages/NotFound"; // Import du nouveau composant 404
@@ -54,11 +55,12 @@ const App = () => {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Navigate to="/accueil" />} />
+          <Route path="/Abonnement" element={<Abonnement />} />
           <Route path="/accueil" element={<Homepage />} />
           <Route path="/hero" element={<Hero />} />
           <Route path="/fonctionnalites" element={<Features />} />
           <Route path="/statistics" element={<Statistics />} />
-          <Route path="/tarifs" element={<Tarifs />} />
+          <Route path="/abonnements" element={<Tarifs />} />
           <Route path="/personnalisation" element={<Personnalisable />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/bandeau" element={<Bandeau />} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Calendar, Clock, Users } from "lucide-react";
+import { Calendar, Clock, Users, UsersRound, Smartphone, TrendingUp, BarChart3, Target } from "lucide-react";
 import "../style/Personnalisable.css";
 
 export default function Hero() {
@@ -19,7 +19,8 @@ export default function Hero() {
           {/* Contenu texte */}
           <div className="content-wrapper">
             <h1 className="hero-title">
-              <span className="title-gradient">Optimisez vos réservations</span>
+              <span>Transformez votre </span>
+              <span className="hero-title-gradient">expérience de gestion de terrain</span>
               <br />
               avec FootSpace-Solutions
             </h1>
@@ -29,7 +30,44 @@ export default function Hero() {
               haut de gamme et nos outils analytiques avancés.
             </p>
             
-           
+            {/* Fonctionnalités principales */}
+            <div className="hero-features">
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <UsersRound />
+                </div>
+                <div className="feature-content">
+                  <h3 className="feature-title">Gestion des abonnés</h3>
+                  <p className="feature-description">
+                    Suivez vos abonnés, gérez les cotisations et offrez une expérience personnalisée
+                  </p>
+                </div>
+              </div>
+              
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <BarChart3 />
+                </div>
+                <div className="feature-content">
+                  <h3 className="feature-title">Analyses des revenus</h3>
+                  <p className="feature-description">
+                    Visualisez vos performances financières avec des tableaux de bord intuitifs
+                  </p>
+                </div>
+              </div>
+              
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <Target />
+                </div>
+                <div className="feature-content">
+                  <h3 className="feature-title">Prévision de réservations</h3>
+                  <p className="feature-description">
+                    Anticipez la demande et optimisez votre planning avec nos prévisions IA
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Carte de réservation */}
@@ -54,9 +92,9 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="time-slots-container">
+            <div className="slots-container">
               {timeSlots.map((slot, index) => (
-                <div key={index} className={`time-slot ${slot.status}`}>
+                <div key={index} className={`slot-item ${slot.status}`}>
                   <div className="slot-info">
                     <Clock className="slot-icon" />
                     <span>{slot.time}</span>
