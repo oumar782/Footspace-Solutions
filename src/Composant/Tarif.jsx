@@ -462,7 +462,7 @@ const PAYMENT_MODES = [
 let _toastId = 0;
 
 // Configuration API
-const API_BASE_URL = "http://localhost:5000/api/souscription";
+const API_BASE_URL = "https://backend-foot-omega.vercel.app/api/souscription";
 
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false);
